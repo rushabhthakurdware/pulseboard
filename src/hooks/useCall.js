@@ -63,7 +63,7 @@ export function useCall(workspaceId) {
     }
 
     const channel = supabase.channel(`call:${workspaceId}`, {
-      config: { broadcast: { self: false } },
+        config: { private: true, broadcast: { self: false } },
     })
 
     channel

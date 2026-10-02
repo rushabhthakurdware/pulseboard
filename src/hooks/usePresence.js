@@ -13,7 +13,7 @@ export function usePresence(workspaceId) {
 
   useEffect(() => {
     const channel = supabase.channel(`room:${workspaceId}`, {
-      config: { presence: { key: user.id } },
+        config: { private: true, presence: { key: user.id } },
     })
 
     channel
