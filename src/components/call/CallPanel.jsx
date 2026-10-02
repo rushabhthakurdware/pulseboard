@@ -18,10 +18,23 @@ function Tile({ stream, label, mirror }) {
 }
 
 export default function CallPanel({ call, names }) {
-  const { localStream, remotes, muted, camOff, leave, toggleMic, toggleCam } = call
-
+    const { localStream, remotes, muted, camOff, isHost, requests,
+          leave, admit, deny, toggleMic, toggleCam } = call
   return (
+    
     <div className="bg-gray-900 rounded-xl p-4 space-y-3">
+         {isHost && requests.map((r) => (
+        <div key={r.id}
+          className="bg-white rounded-lg p-3 flex items-center justify-between gap-3">
+          <span className="text-sm"><b>{r.name}</b> wants to join the call</span>
+          <div className="flex gap-2">
+            <button onClick={() => admit(r.id)}
+              className="bg-green-600 text-white px-3 py-1 rounded text-sm">Admit</button>
+            <button onClick={() => deny(r.id)}
+              className="border px-3 py-1 rounded text-sm">Deny</button>
+          </div>
+        </div>
+      ))}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
         <Tile stream={localStream} label="You" mirror />
         {Object.entries(remotes).map(([id, stream]) => (
@@ -41,6 +54,9 @@ export default function CallPanel({ call, names }) {
         <button onClick={leave} className="px-4 py-2 rounded-full text-sm bg-red-600 text-white">
           📞 Leave
         </button>
+        <button onClick={() => leave()} className="px-4 py-2 rounded-full text-sm bg-red-600 text-white">
+        {isHost ? '📞 End call for all' : '📞 Leave'}
+      </button>
       </div>
     </div>
   )
