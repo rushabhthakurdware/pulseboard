@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
-import AvatarUpload from '../components/AvatarUpload'
+import AvatarUpload from '../components/Avatarupload'
 
 export function Dashboard() {
   const { user } = useAuth()

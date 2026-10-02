@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 
-export default function AvatarUpload() {
+export default function Avatarupload() {
   const { user } = useAuth()
   const [url, setUrl] = useState(null)
   const [busy, setBusy] = useState(false)
