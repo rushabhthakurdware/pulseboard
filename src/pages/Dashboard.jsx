@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
-import AvatarUpload from '../components/Avatarupload'
+import AvatarUpload from '../components/AvatarUpload'
 
-export default function Dashboard() {
+export function Dashboard() {
   const { user } = useAuth()
   const navigate = useNavigate()
   const [workspaces, setWorkspaces] = useState([])
